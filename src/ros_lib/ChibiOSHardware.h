@@ -16,7 +16,7 @@ public:
 
   void init() {}
 
-  void setDriver(SerialDriver* driver) { iostream = (BaseChannel*)driver; }
+  void setDriver(BaseChannel* driver) { iostream = driver; }
 
   int read() { return chnGetTimeout(iostream, TIME_IMMEDIATE); }
 
