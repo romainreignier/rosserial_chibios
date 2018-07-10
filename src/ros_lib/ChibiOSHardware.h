@@ -12,7 +12,14 @@ class ChibiOSHardware
 public:
   ChibiOSHardware(BaseChannel* io) { iostream = io; }
 
-  ChibiOSHardware() { iostream = (BaseChannel*)&SD2; }
+  ChibiOSHardware()
+  {
+#ifdef HAL_USE_SERIAL_USB
+    iostream = (BaseChannel*)&SDU1;
+#else
+    iostream = (BaseChannel*)&SD2;
+#endif
+  }
 
   void init() {}
 
